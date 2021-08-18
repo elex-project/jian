@@ -6,4 +6,4 @@
  * https://www.elex-project.com/
  */
 
-rootProject.name = "jian"
+package com.elex_project.jian;

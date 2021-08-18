@@ -1,3 +1,12 @@
+/*
+ * Project Jian
+ * Morse Code
+ *
+ * Copyright (c) 2021. Elex. All Rights Reserved.
+ * https://www.elex-project.com/
+ */
+
+
 plugins {
 	java
 	`java-library`
@@ -6,8 +15,8 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "1.0-SNAPSHOT"
-description = ""//todo
+version = "1.0.1"
+description = "Morse code"
 
 repositories {
 	maven {
@@ -33,7 +42,7 @@ configurations {
 }
 
 tasks.jar {
-	manifest { // todo
+	manifest {
 		attributes(mapOf(
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
@@ -71,23 +80,17 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				// todo
 				name.set(project.name)
 				description.set(project.description)
 				url.set("https://www.elex-project.com/")
-				inceptionYear.set("2021")
-				properties.set(mapOf(
-						"myProp" to "value",
-						"prop.with.dots" to "anotherValue"
-				))
+				inceptionYear.set("2014")
 				organization {
 					name.set("Elex co.,Pte.")
 					url.set("https://www.elex-project.com/")
 				}
 				licenses {
 					license {
-						// todo
-						name.set("Apache License 2.0")
+						name.set("BSD-3-Clause License")
 						url.set("https://github.com/elex-project/${project.name}/blob/main/LICENSE")
 						comments.set("")
 					}
@@ -102,21 +105,19 @@ publishing {
 						organizationUrl.set("https://www.elex-project.com/")
 						roles.set(arrayListOf("Developer", "CEO"))
 						timezone.set("Asia/Seoul")
-						properties.set(mapOf("" to ""))
 					}
 				}
-				contributors {
+				/*contributors {
 					contributor {
 						name.set("")
 						email.set("")
 						url.set("")
 					}
-				}
+				}*/
 				scm {
-					// todo
 					connection.set("scm:git:https://github.com/elex-project/${project.name}.git")
 					developerConnection.set("scm:git:https://github.com/elex-project/${project.name}.git")
-					url.set("https://github.com/elex-project/my-library/")
+					url.set("https://github.com/elex-project/${project.name}/")
 				}
 			}
 		}
@@ -134,7 +135,7 @@ publishing {
 				password = project.findProperty("repo.password") as String
 			}
 		}
-		maven { //todo
+		maven {
 			name = "mavenGithub"
 			url = uri("https://maven.pkg.github.com/elex-project/${project.name}")
 			credentials {
